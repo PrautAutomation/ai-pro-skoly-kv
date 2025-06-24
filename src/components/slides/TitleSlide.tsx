@@ -11,7 +11,16 @@ export const TitleSlide: React.FC<TitleSlideProps> = ({ slideNumber, totalSlides
   return (
     <SlideLayout slideNumber={slideNumber} totalSlides={totalSlides}>
       <div className="school-icon">🏫</div>
-      <h1>AI vzdělávání pro Karlovarský kraj</h1>
+      <div style={{ 
+        background: 'rgba(0, 0, 0, 0.3)', 
+        backdropFilter: 'blur(20px)', 
+        borderRadius: '16px', 
+        padding: '2rem', 
+        margin: '2rem 0',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h1 style={{ margin: 0, marginBottom: '2rem' }}>AI vzdělávání pro Karlovarský kraj</h1>
+      </div>
       <div style={{ 
         background: 'rgba(0, 0, 0, 0.3)', 
         backdropFilter: 'blur(20px)', 

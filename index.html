@@ -1,24 +1,1437 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>glass-future-presenter</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Vzdělávání - Karlovarský kraj</title>
+    <meta name="description" content="Personalizované AI vzdělávání pro školy v Karlovarském kraji - Setkání ředitelů škol">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+            --shadow-elevated: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
 
-    <meta property="og:title" content="glass-future-presenter" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .presentation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-glass);
+            color: var(--text-light);
+            min-height: 700px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .slide.title-slide {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slide h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .title-slide h1 {
+            -webkit-text-fill-color: var(--text-light);
+            color: var(--text-light);
+        }
+
+        .slide h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 2.5rem;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .slide h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .slide h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            margin: 2rem 0 1rem 0;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .slide p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .slide ul, .slide ol {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            line-height: 1.7;
+            margin: 1.5rem 0;
+            padding-left: 0;
+        }
+
+        .slide li {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide li:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide ol li {
+            list-style: decimal;
+            list-style-position: inside;
+        }
+
+        .slide li::before {
+            content: "✨";
+            margin-right: 0.75rem;
+            font-size: 1.1em;
+        }
+
+        .slide ol li::before {
+            content: "";
+            margin-right: 0;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .problem-highlight {
+            background: rgba(239, 68, 68, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .solution-highlight {
+            background: rgba(34, 197, 94, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .partnership-highlight {
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--accent-gradient);
+            opacity: 0.1;
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .stat-card:hover::before {
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(0) translateY(0) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            position: relative;
+            z-index: 2;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-gradient);
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 1.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(10px);
+        }
+
+        .month-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .cta-button {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            font-family: 'Inter', sans-serif;
+            min-width: 200px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+            box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .indicator-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .indicator-dot.active {
+            background: white;
+            transform: scale(1.4);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .highlight-text {
+            background: var(--accent-gradient);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+
+        .school-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1.5rem;
+                margin: 1.5rem 0;
+                min-height: 600px;
+            }
+            
+            .presentation-container {
+                padding: 1rem;
+            }
+            
+            .grid-2, .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 1rem;
+            }
+            
+            .timeline-item {
+                padding-left: 3rem;
+            }
+            
+            .timeline-item::before {
+                left: 0.75rem;
+            }
+            
+            .navigation {
+                bottom: 1rem;
+                right: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .nav-button {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1rem;
+            }
+            
+            .slide-indicator {
+                bottom: 5.5rem;
+                right: 1rem;
+            }
+            
+            .cta-button {
+                min-width: 180px;
+                margin: 0.5rem;
+            }
+        }
+
+        /* Additional glassmorphism enhancements */
+        .example-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .student-example {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .student-example:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .vark-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .vark-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vark-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .vark-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .security-card {
+            background: rgba(34, 197, 94, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .security-card:hover {
+            background: rgba(34, 197, 94, 0.15);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide active" id="slide-1">
+            <div class="slide-counter">1/11</div>
+            <div class="school-icon">🏫</div>
+            <h1>AI vzdělávání pro Karlovarský kraj</h1>
+            <p style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); margin: 2rem 0; opacity: 0.95; font-weight: 500;">Setkání ředitelů škol - Partnerství pro budoucnost</p>
+            <p style="font-size: clamp(1rem, 2vw, 1.3rem); opacity: 0.8; font-weight: 400;">Každý student se učí jinak. Pojďme být první, kdo to respektuje.</p>
+        </div>
+
+        <!-- Slide 2: Problém -->
+        <div class="slide" id="slide-2">
+            <div class="slide-counter">2/11</div>
+            <h2>🎯 Výzva pro ředitele škol v Karlovarském kraji</h2>
+            
+            <div class="glass-card problem-highlight">
+                <h3>Vážení ředitelé, každý student se učí jinak, ale vyučujeme všechny stejně</h3>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">25-30</span>
+                    <span class="stat-label">studentů na jednoho učitele</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40%</span>
+                    <span class="stat-label">studentů označuje školu za "nudnou"</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">učitelů se cítí přetížených</span>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <h3>🔍 Co vidíme ve školách Karlovarského kraje:</h3>
+                    <ul>
+                        <li><strong>Demografický pokles</strong> - konkurence o každého studenta</li>
+                        <li><strong>Odchod talentů</strong> do Prahy nebo Plzně</li>
+                        <li><strong>Konkurence soukromých škol</strong> s lepším vybavením</li>
+                        <li><strong>Potřeba ukázat moderní přístup</strong> rodičům</li>
+                        <li>Přetížení učitelé bez času na individuální přístup</li>
+                        <li>Standardizované testy neodráží skutečné schopnosti</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="glass-card solution-highlight">
+                        <h3>💡 Naše řešení pro ředitele:</h3>
+                        <p>AI asistent, který pomůže vaší škole vyniknout v regionu a přitáhnout nejlepší studenty i učitele.</p>
+                        
+                        <h4 style="margin-top: 1.5rem;">Výhody pro vaši školu:</h4>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>Konkurenční výhoda:</strong> První škola s AI v regionu</li>
+                            <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne talenty</li>
+                            <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: VARK Model -->
+        <div class="slide" id="slide-3">
+            <div class="slide-counter">3/11</div>
+            <h2>🧠 Vědecký základ - Jak se lidé učí</h2>
+            
+            <p style="font-size: 1.3rem; margin-bottom: 2rem; text-align: center; font-weight: 500;"><strong>VARK Model - 4 základní styly učení:</strong></p>
+
+            <div class="vark-grid">
+                <div class="vark-card">
+                    <h3>👁️ Vizuální studenti</h3>
+                    <p><span class="highlight-text">65% populace</span></p>
+                    <p>Lépe chápou prostřednictvím obrázků, grafů, schémat. Potřebují "vidět" informace.</p>
+                </div>
+                
+                <div class="vark-card">
+                    <h3>🎧 Auditivní studenti</h3>
+                    <p><span class="highlight-text">30% populace</span></p>
+                    <p>Učí se posloucháním a diskuzí. Rádi si vysvětlují látku nahlas.</p>
+                </div>
+                
+                <div class="vark-card">
+                    <h3>📖 Čteči/písaři</h3>
+                    <p><span class="highlight-text">25% populace</span></p>
+                    <p>Preferují textové materiály a psaní poznámek. Potřebují strukturované texty.</p>
+                </div>
+                
+                <div class="vark-card">
+                    <h3>🤝 Kinestetičtí studenti</h3>
+                    <p><span class="highlight-text">15% populace</span></p>
+                    <p>Musí si věci "osahat" a vyzkoušet. Učí se nejlépe praktickými aktivitami.</p>
+                </div>
+            </div>
+
+            <div class="glass-card solution-highlight">
+                <p style="text-align: center; font-style: italic; margin: 0; font-size: 1.1rem;">
+                    Většina studentů kombinuje více stylů, ale má jeden dominantní. <br>
+                    <strong>Personalizace podle stylu učení může zlepšit výsledky o 34%!</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Proč personalizace funguje -->
+        <div class="slide" id="slide-4">
+            <div class="slide-counter">4/11</div>
+            <h2>📊 Proč personalizace funguje</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">34%</span>
+                    <span class="stat-label">zlepšení výsledků při personalizované výuce</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50%</span>
+                    <span class="stat-label">vyšší motivace studentů</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">snížení počtu "nepozorných" studentů</span>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <h3>🌍 Mezinárodní příklady úspěchu:</h3>
+                    <ul>
+                        <li><strong>Finsko:</strong> Individuální přístup = světový lídr ve vzdělávání</li>
+                        <li><strong>Singapur:</strong> Personalizované STEM programy</li>
+                        <li><strong>Montessori školy:</strong> Individuální tempo od počátku</li>
+                        <li><strong>Khan Academy:</strong> Adaptivní učení s prokázanými výsledky</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>🎯 Výhody pro vaši školu jako ředitele:</h3>
+                    <div class="glass-card solution-highlight">
+                        <ul style="margin: 0;">
+                            <li><strong>Konkurenční výhoda:</strong> První škola s AI personalizací v regionu</li>
+                            <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne nejlepší studenty a učitele</li>
+                            <li><strong>Měřitelné výsledky:</strong> Lepší výsledky studentů = vyšší prestiž školy</li>
+                            <li><strong>Spokojení učitelé:</strong> Méně stresu, více času na kreativní výuku</li>
+                            <li><strong>Pozitivní publicita:</strong> Média se budou zajímat o vaši inovaci</li>
+                            <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: AI Řešení -->
+        <div class="slide" id="slide-5">
+            <div class="slide-counter">5/11</div>
+            <h2>🤖 Naše AI řešení pro školy</h2>
+            
+            <div class="glass-card partnership-highlight">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Jak to funguje v praxi:</h3>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">1. Rychlá diagnostika (5 minut)</div>
+                        <ul>
+                            <li>Student vyplní jednoduchý test svého stylu učení</li>
+                            <li>AI analyzuje odpovědi a chování</li>
+                            <li>Vytvoří osobní "vzdělávací profil"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">2. Automatická personalizace</div>
+                        <ul>
+                            <li>Stejné učivo, různé formáty pro různé studenty</li>
+                            <li>Vizuální studenti dostanou grafy a obrázky</li>
+                            <li>Auditivní studenti si mohou pustit vysvětlení</li>
+                            <li>Praktici dostanou simulace a experimenty</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">3. Podpora pro učitele</div>
+                        <ul>
+                            <li>AI navrhne, jak vysvětlit látku různým typům studentů</li>
+                            <li>Automaticky připraví materiály v různých formátech</li>
+                            <li>Upozorní na studenty, kteří potřebují extra pomoc</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Konkrétní příklad -->
+        <div class="slide" id="slide-6">
+            <div class="slide-counter">6/11</div>
+            <h2>📐 Konkrétní příklad - Hodina matematiky</h2>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <h3 style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    📚 Téma: Kvadratické rovnice
+                </h3>
+            </div>
+
+            <div class="example-section">
+                <h4 style="color: #ef4444; margin-bottom: 1.5rem;">❌ Tradiční výuka:</h4>
+                <p>Všichni dostali stejný výklad u tabule + stejné příklady</p>
+                
+                <h4 style="margin: 2rem 0 1.5rem 0; color: #22c55e;">✅ S naším AI:</h4>
+                
+                <div class="grid-2" style="gap: 1.5rem;">
+                    <div class="student-example">
+                        <h4>👁️ Pro vizuálního studenta:</h4>
+                        <ul>
+                            <li>Interaktivní graf zobrazující paraboly</li>
+                            <li>Barevné schéma pro různé části rovnice</li>
+                            <li>Animace měnících se koeficientů</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="student-example">
+                        <h4>🎧 Pro auditivního studenta:</h4>
+                        <ul>
+                            <li>Hlasové vysvětlení krok za krokem</li>
+                            <li>Možnost diskuze s AI o problematických místech</li>
+                            <li>Rytmické načítání vzorců</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="student-example">
+                        <h4>🤝 Pro praktického studenta:</h4>
+                        <ul>
+                            <li>Simulace házení míčku (reálná aplikace paraboly)</li>
+                            <li>Kalkulátor s možností experimentování</li>
+                            <li>Projekty typu "najdi optimální úhel pro katapult"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card solution-highlight">
+                <h3 style="text-align: center; margin: 0; color: #22c55e;">
+                    🎯 Výsledek: Všichni pochopili stejné učivo, každý svým způsobem!
+                </h3>
+            </div>
+        </div>
+
+        <!-- Slide 7: Spolupráce -->
+        <div class="slide" id="slide-7">
+            <div class="slide-counter">7/11</div>
+            <h2>🤝 Partnerství s Karlovarským krajem</h2>
+            
+            <div class="glass-card partnership-highlight">
+                <h3 style="text-align: center;">Hledáme 3-5 škol z Karlovarského kraje pro pilotní program</h3>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <div class="glass-card problem-highlight">
+                        <h3>🎯 Ideální partner pro pilotní program:</h3>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>Otevřený inovacím</strong> - ředitel podporující modernizaci</li>
+                            <li><strong>Motivovaný tým učitelů</strong> - alespoň 2-3 nadšení učitelé</li>
+                            <li><strong>Stabilní škola</strong> - minimálně 200 studentů</li>
+                            <li><strong>Dobré vztahy s rodiči</strong> - otevřená komunikace s komunitou</li>
+                            <li><strong>Zájem o výjimečnost</strong> - chce se odlišit od konkurence</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="glass-card solution-highlight">
+                        <h3>🎁 Co jako ředitel získáte:</h3>
+                        
+                        <h4 style="margin-top: 1.5rem;">Bezplatná implementace (běžná hodnota 500 000 Kč)</h4>
+                        <ul style="margin-top: 0.75rem;">
+                            <li>Kompletní AI systém pro jednu třídu na celý školní rok</li>
+                            <li>Instalace, nastavení a školení učitelů zdarma</li>
+                            <li>Technická podpora a pravidelné konzultace</li>
+                        </ul>
+                        
+                        <h4 style="margin-top: 1.5rem;">Konkurenční výhoda</h4>
+                        <ul style="margin-top: 0.75rem;">
+                            <li>První škola s AI personalizací v regionu</li>
+                            <li>Pozitivní publicita v médiích a u rodičů</li>
+                            <li>Možnost prezentovat se jako "škola budoucnosti"</li>
+                        </ul>
+                        
+                        <h4 style="margin-top: 1.5rem;">Dlouhodobé partnerství</h4>
+                        <ul style="margin-top: 0.75rem;">
+                            <li>Spoluúčast na vývoji produktu</li>
+                            <li>Prioritní přístup k novým funkcím</li>
+                            <li>Možnost stát se referenční školou pro celou ČR</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Bezpečnost dat -->
+        <div class="slide" id="slide-8">
+            <div class="slide-counter">8/11</div>
+            <h2>🔒 Ochrana dat a bezpečnost</h2>
+            
+            <div class="glass-card partnership-highlight">
+                <h3 style="text-align: center;">Vaše obavy chápeme - data studentů jsou citlivá</h3>
+            </div>
+
+            <div class="security-grid">
+                <div class="security-card">
+                    <h4>🔐 Anonymizace</h4>
+                    <ul>
+                        <li>Žádná jména ani osobní údaje studentů</li>
+                        <li>Pouze vzdělávací vzorce a styly učení</li>
+                        <li>Veškerá data zůstávají ve vlastnictví školy</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <h4>📋 GDPR compliance</h4>
+                    <ul>
+                        <li>Plně v souladu s evropským nařízením</li>
+                        <li>Transparentní informování rodičů</li>
+                        <li>Možnost opt-out kdykoliv</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <h4>💾 Lokální uložení</h4>
+                    <ul>
+                        <li>Data zůstávají na školních serverech</li>
+                        <li>AI algoritmus běží lokálně</li>
+                        <li>Žádný přenos citlivých informací ven</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <h4>⚙️ Kontrola školy</h4>
+                    <ul>
+                        <li>Škola má plnou kontrolu nad všemi daty</li>
+                        <li>Možnost kdykoliv ukončit spolupráci</li>
+                        <li>Exportní možnosti pro vlastní analýzy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card solution-highlight">
+                <h3 style="text-align: center; margin: 0;">
+                    🛡️ Bezpečnost a důvěra jsou naší prioritou číslo jedna
+                </h3>
+            </div>
+        </div>
+
+        <!-- Slide 9: Implementace -->
+        <div class="slide" id="slide-9">
+            <div class="slide-counter">9/11</div>
+            <h2>📅 Implementace krok za krokem</h2>
+            
+            <div class="glass-card partnership-highlight">
+                <h3 style="text-align: center;">Jak začneme - časový plán:</h3>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">Měsíc 1: Příprava</div>
+                        <ul>
+                            <li>Setkání s vedením školy a učiteli</li>
+                            <li>Prezentace rodičům a získání souhlasů</li>
+                            <li>Technické nastavení systému</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">Měsíc 2-3: Diagnostika a nastavení</div>
+                        <ul>
+                            <li>Studenti vyplní vstupní testy</li>
+                            <li>Kalibrace AI pro českou vzdělávací soustavu</li>
+                            <li>Školení učitelů v práci se systémem</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">Měsíc 4-12: Aktivní pilotování</div>
+                        <ul>
+                            <li>Pravidelná výuka s AI asistencí</li>
+                            <li>Měsíční hodnocení pokroku</li>
+                            <li>Průběžné dotazníky spokojenosti</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="month-label">Měsíc 12: Vyhodnocení</div>
+                        <ul>
+                            <li>Porovnání výsledků před/po implementaci</li>
+                            <li>Zpráva o dopadu na vzdělávání</li>
+                            <li>Rozhodnutí o pokračování</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Očekávané výsledky -->
+        <div class="slide" id="slide-10">
+            <div class="slide-counter">10/11</div>
+            <h2>📈 Očekávané výsledky</h2>
+            
+            <div class="glass-card partnership-highlight">
+                <h3 style="text-align: center;">Co můžete čekat po roce spolupráce:</h3>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h4>🎓 Měřitelné benefity pro studenty</h4>
+                    <div class="stats-grid" style="margin: 1.5rem 0;">
+                        <div class="stat-card">
+                            <span class="stat-number" style="font-size: 2rem;">25-40%</span>
+                            <span class="stat-label">zlepšení výsledků v testech</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" style="font-size: 2rem;">50%</span>
+                            <span class="stat-label">vyšší míra dokončení úkolů</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" style="font-size: 2rem;">60%</span>
+                            <span class="stat-label">studentů hlásí vyšší zájem</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" style="font-size: 2rem;">30%</span>
+                            <span class="stat-label">snížení neprospívajících</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>👨‍🏫 Benefity pro učitele</h4>
+                    <ul>
+                        <li><strong>3-5 hodin týdně</strong> úspory času při přípravě</li>
+                        <li><strong>Lepší vztahy</strong> se studenty díky individuálnímu přístupu</li>
+                        <li><strong>Nové dovednosti</strong> v oblasti digitálního vzdělávání</li>
+                        <li><strong>Vyšší pracovní spokojenost</strong> a motivace</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>🏫 Benefity pro školu</h4>
+                    <ul>
+                        <li><strong>Pozitivní publicita</strong> jako inovativní instituce</li>
+                        <li><strong>Lepší výsledky</strong> v krajských/národních srovnáních</li>
+                        <li><strong>Vyšší zájem</strong> rodičů o přihlášení dětí</li>
+                        <li><strong>Možnost získání grantů</strong> na inovace ve vzdělávání</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Call to Action -->
+        <div class="slide" id="slide-11">
+            <div class="slide-counter">11/11</div>
+            <div class="cta-section">
+                <h1 style="margin-bottom: 2rem;">🚀 Výzva k partnerství pro Karlovarský kraj</h1>
+                
+                <div style="margin: 3rem 0; font-size: 1.2rem;">
+                    <h3 style="margin-bottom: 2rem;">Dnes vám nabízím možnost stát se průkopníky</h3>
+                </div>
+                
+                <div class="grid-2" style="margin: 3rem 0; text-align: left;">
+                    <div>
+                        <h4>🎯 Proč právě vaše školy:</h4>
+                        <ul>
+                            <li><strong>Karlovarský kraj</strong> může být první region s AI vzděláváním</li>
+                            <li><strong>Demografické výzvy</strong> vyžadují inovativní řešení</li>
+                            <li><strong>Konkurence</strong> mezi školami roste - potřebujete výhodu</li>
+                            <li><strong>Talentovaní studenti</strong> zůstanou v regionu</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4>🎁 Co nabízím jako CEO:</h4>
+                        <ul>
+                            <li><strong>3-5 pilotních míst</strong> pro školy z kraje</li>
+                            <li><strong>Bezplatná implementace</strong> v hodnotě 500 000 Kč</li>
+                            <li><strong>Preferenční podmínky</strong> po úspěšném pilotu</li>
+                            <li><strong>Mediální podpora</strong> - "škola budoucnosti"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin: 3rem 0;">
+                    <h4 style="margin-bottom: 1.5rem;">📋 Jak to bude probíhat:</h4>
+                    <ol style="text-align: left; max-width: 700px; margin: 0 auto;">
+                        <li><strong>Dnes se rozhodnete</strong> - kdo má zájem o prezentaci</li>
+                        <li><strong>Příští týden navštívím</strong> vybrané školy (individuálně)</li>
+                        <li><strong>Do konce měsíce</strong> výběr 3-5 partnerských škol</li>
+                        <li><strong>Od září</strong> start pilotního programu</li>
+                    </ol>
+                </div>
+                
+                <div style="margin: 3rem 0;">
+                    <button class="cta-button" onclick="window.open('mailto:info@ai-vzdelavani.cz?subject=Zájem o AI vzdělávání - Karlovarský kraj')">📧 info@ai-vzdelavani.cz</button>
+                    <button class="cta-button" onclick="window.open('tel:+420XXXXXXXXX')">📞 +420 XXX XXX XXX</button>
+                    <button class="cta-button" onclick="alert('Kontaktujte nás pro individuální schůzku na vaší škole!')">🤝 Chci individuální schůzku</button>
+                </div>
+                
+                <p style="font-size: 1.4rem; margin: 2rem 0; font-weight: 600;">
+                    <span class="pulse">⚡</span> Kdo má zájem, ať se ozve ještě dnes - místa jsou limitovaná!
+                </p>
+                
+                <p style="font-size: 1.6rem; margin: 0; font-style: italic; opacity: 0.9;">
+                    "Karlovarský kraj může být první region, kde každé dítě dostane vzdělávání šité na míru."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="prevSlide()" title="Předchozí slide" aria-label="Předchozí slide">‹</button>
+        <button class="nav-button" onclick="nextSlide()" title="Další slide" aria-label="Další slide">›</button>
+    </div>
+
+    <!-- Slide indicator -->
+    <div class="slide-indicator" id="slideIndicator"></div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        // Initialize slide indicators
+        function initializeIndicators() {
+            const indicator = document.getElementById('slideIndicator');
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'indicator-dot';
+                if (i === 1) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                indicator.appendChild(dot);
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function updateIndicators() {
+            const dots = document.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+                if (index + 1 === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            const activeSlide = document.getElementById(`slide-${currentSlide}`);
+            activeSlide.classList.add('active');
+            
+            updateProgressBar();
+            updateIndicators();
+            
+            // Smooth scroll to slide
+            activeSlide.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                goToSlide(1);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                goToSlide(totalSlides);
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide(); // Swipe left - next slide
+                } else {
+                    prevSlide(); // Swipe right - previous slide
+                }
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeIndicators();
+            showSlide(1);
+            
+            // Add interactive effects
+            document.querySelectorAll('.stat-card, .benefit-card, .vark-card, .glass-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Auto-hide navigation after inactivity
+        let inactivityTimer;
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            document.querySelector('.navigation').style.opacity = '1';
+            document.querySelector('.slide-indicator').style.opacity = '1';
+            
+            inactivityTimer = setTimeout(() => {
+                document.querySelector('.navigation').style.opacity = '0.3';
+                document.querySelector('.slide-indicator').style.opacity = '0.3';
+            }, 3000);
+        }
+
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keydown', resetInactivityTimer);
+        resetInactivityTimer();
+
+        // Enhanced scroll effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('body::before');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
 </html>

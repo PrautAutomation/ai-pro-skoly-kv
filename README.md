@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
+Tady je překlad do češtiny:
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01
+# Vítejte ve svém projektu Lovable
 
-## How can I edit this code?
+## Informace o projektu
 
-There are several ways of editing your application.
+**URL**: [https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01)
 
-**Use Lovable**
+## Jak mohu tento kód upravit?
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) and start prompting.
+Existuje několik způsobů, jak svou aplikaci upravovat.
 
-Changes made via Lovable will be committed automatically to this repo.
+**Použijte Lovable**
 
-**Use your preferred IDE**
+Stačí navštívit [Lovable Project](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) a začít zadávat požadavky (promptovat).
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Změny provedené přes Lovable budou automaticky commitnuty do tohoto repozitáře.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+**Použijte svůj oblíbený IDE**
 
-Follow these steps:
+Pokud chcete pracovat lokálně ve svém oblíbeném IDE, můžete si repozitář naklonovat a změny pushovat. Odeslané změny se také projeví v Lovable.
+
+Jediným požadavkem je mít nainstalované Node.js & npm – [instalace pomocí nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Postupujte podle těchto kroků:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Krok 1: Naklonujte repozitář pomocí Git URL projektu.
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Krok 2: Přejděte do složky s projektem.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Krok 3: Nainstalujte potřebné závislosti.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Krok 4: Spusťte vývojový server s automatickým reloadem a okamžitým náhledem.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+**Úprava souboru přímo na GitHubu**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+* Přejděte na požadovaný soubor(y).
+* Klikněte na tlačítko „Edit“ (ikona tužky) vpravo nahoře v náhledu souboru.
+* Proveďte úpravy a commitněte změny.
 
-**Use GitHub Codespaces**
+**Použití GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* Přejděte na hlavní stránku vašeho repozitáře.
+* Klikněte na tlačítko „Code“ (zelené tlačítko) vpravo nahoře.
+* Vyberte záložku „Codespaces“.
+* Klikněte na „New codespace“ pro spuštění nového prostředí Codespace.
+* Upravujte soubory přímo v Codespace a po dokončení commitněte a pushněte změny.
 
-## What technologies are used for this project?
+## Jaké technologie jsou v projektu použity?
 
-This project is built with:
+Tento projekt je postaven na:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* Vite
+* TypeScript
+* React
+* shadcn-ui
+* Tailwind CSS
 
-## How can I deploy this project?
+## Jak mohu tento projekt nasadit?
 
-Simply open [Lovable](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) and click on Share -> Publish.
+Stačí otevřít [Lovable](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) a kliknout na Sdílet -> Publikovat.
 
-## Can I connect a custom domain to my Lovable project?
+## Můžu propojit vlastní doménu s projektem na Lovable?
 
-Yes, you can!
+Ano, můžete!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Pro připojení domény přejděte do Project > Settings > Domains a klikněte na Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Více informací zde: [Nastavení vlastní domény](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

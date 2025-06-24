@@ -74,10 +74,6 @@ export const CallToActionSlide: React.FC<CallToActionSlideProps> = ({ slideNumbe
         <p style={{ fontSize: '1.6rem', margin: 0, fontStyle: 'italic', opacity: 0.9 }}>
           "Karlovarský kraj může být první region, kde každé dítě dostane vzdělávání šité na míru."
         </p>
-        
-        <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="/lovable-uploads/8b66dd82-101f-4836-8d7d-70ac1d4b9147.png" alt="Praut s.r.o." style={{ height: '50px', width: 'auto', opacity: 0.7 }} />
-        </div>
       </div>
     </SlideLayout>
   );

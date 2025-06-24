@@ -16,9 +16,7 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
 }) => {
   return (
     <>
-      <div className="praut-logo">
-        <img src="/lovable-uploads/8b66dd82-101f-4836-8d7d-70ac1d4b9147.png" alt="Praut s.r.o." style={{ height: '40px', width: 'auto' }} />
-      </div>
+      <div className="praut-logo" />
       <div className="slide-counter">{slideNumber}/{totalSlides}</div>
       <div className={className}>
         {children}

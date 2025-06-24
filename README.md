@@ -24,7 +24,7 @@ Postupujte podle těchto kroků:
 
 ```sh
 # Krok 1: Naklonujte repozitář pomocí Git URL projektu.
-git clone [This Repo](https://github.com/PrautAutomation/ai-pro-skoly-kv.git)
+git clone https://github.com/PrautAutomation/ai-pro-skoly-kv.git
 
 # Krok 2: Přejděte do složky s projektem.
 cd ai-pro-skoly-kv

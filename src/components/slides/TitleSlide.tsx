@@ -10,25 +10,13 @@ interface TitleSlideProps {
 export const TitleSlide: React.FC<TitleSlideProps> = ({ slideNumber, totalSlides }) => {
   return (
     <SlideLayout slideNumber={slideNumber} totalSlides={totalSlides}>
-      <div className="school-icon">🏫</div>
-      <div style={{ 
-        background: 'rgba(0, 0, 0, 0.3)', 
-        backdropFilter: 'blur(20px)', 
-        borderRadius: '16px', 
-        padding: '2rem', 
-        margin: '2rem 0',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
-      }}>
-        <h1 style={{ margin: 0, marginBottom: '2rem' }}>AI vzdělávání pro Karlovarský kraj</h1>
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <div className="school-icon">🏫</div>
       </div>
-      <div style={{ 
-        background: 'rgba(0, 0, 0, 0.3)', 
-        backdropFilter: 'blur(20px)', 
-        borderRadius: '16px', 
-        padding: '2rem', 
-        margin: '2rem 0',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
-      }}>
+      
+      <h2>AI vzdělávání pro Karlovarský kraj</h2>
+      
+      <div className="glass-card">
         <p style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', margin: '0 0 1.5rem 0', opacity: 0.95, fontWeight: 500 }}>
           Setkání ředitelů škol - Partnerství pro budoucnost
         </p>

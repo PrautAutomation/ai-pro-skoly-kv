@@ -23,7 +23,7 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
       </div>
       {slideNumber === 1 || slideNumber === totalSlides ? (
         <div className="ceo-info">
-          <strong>Martin Švanda</strong><br>
+          <strong>Martin Švanda</strong><br />
           CEO & Co-founder, Praut s.r.o.
         </div>
       ) : null}

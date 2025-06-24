@@ -31,30 +31,27 @@ export const ProblemSlide: React.FC<ProblemSlideProps> = ({ slideNumber, totalSl
         </div>
       </div>
 
-      <div className="grid-2-symmetric">
-        <div>
-          <h3>🔍 Co vidíme ve školách Karlovarského kraje:</h3>
-          <ul>
-            <li><strong>Demografický pokles</strong> - konkurence o každého studenta</li>
-            <li><strong>Odchod talentů</strong> do Prahy nebo Plzně</li>
-            <li><strong>Konkurence soukromých škol</strong> s lepším vybavením</li>
-            <li><strong>Potřeba ukázat moderní přístup</strong> rodičům</li>
-            <li>Přetížení učitelé bez času na individuální přístup</li>
-            <li>Standardizované testy neodráží skutečné schopnosti</li>
+      <div>
+        <h3>🔍 Co vidíme ve školách Karlovarského kraje:</h3>
+        <ul>
+          <li><strong>Demografický pokles</strong> - konkurence o každého studenta</li>
+          <li><strong>Odchod talentů</strong> do Prahy nebo Plzně</li>
+          <li><strong>Konkurence soukromých škol</strong> s lepším vybavením</li>
+          <li><strong>Potřeba ukázat moderní přístup</strong> rodičům</li>
+          <li>Přetížení učitelé bez času na individuální přístup</li>
+          <li>Standardizované testy neodráží skutečné schopnosti</li>
+        </ul>
+        
+        <div className="glass-card solution-highlight" style={{ marginTop: '2rem' }}>
+          <h3>💡 Naše řešení pro ředitele:</h3>
+          <p>AI asistent, který pomůže vaší škole vyniknout v regionu a přitáhnout nejlepší studenty i učitele.</p>
+          
+          <h4 style={{ marginTop: '1.5rem' }}>Konkurenční výhoda:</h4>
+          <ul style={{ marginTop: '1rem' }}>
+            <li><strong>První škola s komplexním AI řešením</strong> v regionu - nikdo jiný se nemůže pochlubit podobnou integrací</li>
+            <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne talenty</li>
+            <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
           </ul>
-        </div>
-        <div>
-          <div className="glass-card solution-highlight">
-            <h3>💡 Naše řešení pro ředitele:</h3>
-            <p>AI asistent, který pomůže vaší škole vyniknout v regionu a přitáhnout nejlepší studenty i učitele.</p>
-            
-            <h4 style={{ marginTop: '1.5rem' }}>Konkurenční výhoda:</h4>
-            <ul style={{ marginTop: '1rem' }}>
-              <li><strong>První škola s komplexním AI řešením</strong> v regionu - nikdo jiný se nemůže pochlubit podobnou integrací</li>
-              <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne talenty</li>
-              <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
-            </ul>
-          </div>
         </div>
       </div>
     </SlideLayout>

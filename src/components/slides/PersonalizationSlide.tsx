@@ -27,29 +27,25 @@ export const PersonalizationSlide: React.FC<PersonalizationSlideProps> = ({ slid
         </div>
       </div>
 
-      <div className="grid-2-symmetric">
-        <div>
-          <h3>🌍 Mezinárodní příklady úspěchu:</h3>
-          <ul>
-            <li><strong>Finsko:</strong> Individuální přístup = světový lídr ve vzdělávání</li>
-            <li><strong>Singapur:</strong> Personalizované STEM programy</li>
-            <li><strong>Montessori školy:</strong> Individuální tempo od počátku</li>
-            <li><strong>Khan Academy:</strong> Adaptivní učení s prokázanými výsledky</li>
-          </ul>
-        </div>
+      <div>
+        <h3>🌍 Mezinárodní příklady úspěchu:</h3>
+        <ul>
+          <li><strong>Finsko:</strong> Individuální přístup = světový lídr ve vzdělávání</li>
+          <li><strong>Singapur:</strong> Personalizované STEM programy</li>
+          <li><strong>Montessori školy:</strong> Individuální tempo od počátku</li>
+          <li><strong>Khan Academy:</strong> Adaptivní učení s prokázanými výsledky</li>
+        </ul>
         
-        <div>
-          <h3>🎯 Výhody pro vaši školu jako ředitele:</h3>
-          <div className="glass-card solution-highlight">
-            <ul style={{ margin: 0 }}>
-              <li><strong>Konkurenční výhoda:</strong> První škola s AI personalizací v regionu</li>
-              <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne nejlepší studenty a učitele</li>
-              <li><strong>Měřitelné výsledky:</strong> Lepší výsledky studentů = vyšší prestiž školy</li>
-              <li><strong>Spokojení učitelé:</strong> Méně stresu, více času na kreativní výuku</li>
-              <li><strong>Pozitivní publicita:</strong> Média se budou zajímat o vaši inovaci</li>
-              <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
-            </ul>
-          </div>
+        <h3 style={{ marginTop: '2rem' }}>🎯 Výhody pro vaši školu jako ředitele:</h3>
+        <div className="glass-card solution-highlight" style={{ marginTop: '1rem' }}>
+          <ul style={{ margin: 0 }}>
+            <li><strong>Konkurenční výhoda:</strong> První škola s AI personalizací v regionu</li>
+            <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne nejlepší studenty a učitele</li>
+            <li><strong>Měřitelné výsledky:</strong> Lepší výsledky studentů = vyšší prestiž školy</li>
+            <li><strong>Spokojení učitelé:</strong> Méně stresu, více času na kreativní výuku</li>
+            <li><strong>Pozitivní publicita:</strong> Média se budou zajímat o vaši inovaci</li>
+            <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
+          </ul>
         </div>
       </div>
     </SlideLayout>

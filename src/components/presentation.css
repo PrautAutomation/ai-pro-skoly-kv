@@ -1,3 +1,4 @@
+
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -113,6 +114,7 @@
     background-clip: text;
     line-height: 1.2;
     letter-spacing: -0.02em;
+    margin-top: 2rem;
 }
 
 .title-slide h1 {
@@ -129,6 +131,7 @@
     padding-bottom: 1rem;
     font-weight: 600;
     letter-spacing: -0.01em;
+    margin-top: 2rem;
 }
 
 .slide h2::after {
@@ -577,7 +580,7 @@
 
 .praut-logo {
     position: absolute;
-    top: 20px;
+    top: 30px;
     left: 30px;
     width: 200px;
     height: 60px;

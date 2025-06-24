@@ -24,10 +24,10 @@ Postupujte podle těchto kroků:
 
 ```sh
 # Krok 1: Naklonujte repozitář pomocí Git URL projektu.
-git clone <YOUR_GIT_URL>
+git clone [This Repo](https://github.com/PrautAutomation/ai-pro-skoly-kv.git)
 
 # Krok 2: Přejděte do složky s projektem.
-cd <YOUR_PROJECT_NAME>
+cd ai-pro-skoly-kv
 
 # Krok 3: Nainstalujte potřebné závislosti.
 npm i
@@ -59,15 +59,3 @@ Tento projekt je postaven na:
 * React
 * shadcn-ui
 * Tailwind CSS
-
-## Jak mohu tento projekt nasadit?
-
-Stačí otevřít [Lovable](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) a kliknout na Sdílet -> Publikovat.
-
-## Můžu propojit vlastní doménu s projektem na Lovable?
-
-Ano, můžete!
-
-Pro připojení domény přejděte do Project > Settings > Domains a klikněte na Connect Domain.
-
-Více informací zde: [Nastavení vlastní domény](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

@@ -9,7 +9,7 @@ interface TitleSlideProps {
 
 export const TitleSlide: React.FC<TitleSlideProps> = ({ slideNumber, totalSlides }) => {
   return (
-    <SlideLayout slideNumber={slideNumber} totalSlides={totalSlides} className="title-slide">
+    <SlideLayout slideNumber={slideNumber} totalSlides={totalSlides}>
       <div className="school-icon">🏫</div>
       <h1>AI vzdělávání pro Karlovarský kraj</h1>
       <div style={{ 

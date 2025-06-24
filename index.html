@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -560,54 +559,63 @@
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
         }
 
+        .praut-logo {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            width: 80px;
+            height: 80px;
+            background-image: url('/lovable-uploads/9270bf46-bb55-4b52-a441-78bf6e5adc5a.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            z-index: 10;
+        }
+
+        .ceo-info {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        .grid-2-symmetric {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .vark-grid-symmetric {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .slide-6-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
         @media (max-width: 768px) {
-            .slide {
-                padding: 2rem 1.5rem;
-                margin: 1.5rem 0;
-                min-height: 600px;
-            }
-            
-            .presentation-container {
-                padding: 1rem;
-            }
-            
-            .grid-2, .stats-grid {
+            .grid-2-symmetric,
+            .vark-grid-symmetric,
+            .slide-6-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
             
-            .timeline::before {
+            .praut-logo {
+                width: 60px;
+                height: 60px;
+                top: 1rem;
                 left: 1rem;
-            }
-            
-            .timeline-item {
-                padding-left: 3rem;
-            }
-            
-            .timeline-item::before {
-                left: 0.75rem;
-            }
-            
-            .navigation {
-                bottom: 1rem;
-                right: 1rem;
-                gap: 0.5rem;
-            }
-            
-            .nav-button {
-                width: 3rem;
-                height: 3rem;
-                font-size: 1rem;
-            }
-            
-            .slide-indicator {
-                bottom: 5.5rem;
-                right: 1rem;
-            }
-            
-            .cta-button {
-                min-width: 180px;
-                margin: 0.5rem;
             }
         }
 
@@ -711,7 +719,7 @@
 
         .security-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -740,15 +748,21 @@
         
         <!-- Slide 1: Title -->
         <div class="slide title-slide active" id="slide-1">
+            <div class="praut-logo"></div>
             <div class="slide-counter">1/11</div>
             <div class="school-icon">🏫</div>
             <h1>AI vzdělávání pro Karlovarský kraj</h1>
             <p style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); margin: 2rem 0; opacity: 0.95; font-weight: 500;">Setkání ředitelů škol - Partnerství pro budoucnost</p>
             <p style="font-size: clamp(1rem, 2vw, 1.3rem); opacity: 0.8; font-weight: 400;">Každý student se učí jinak. Pojďme být první, kdo to respektuje.</p>
+            <div class="ceo-info">
+                <strong>Martin Švanda</strong><br>
+                CEO & Co-founder, Praut s.r.o.
+            </div>
         </div>
 
         <!-- Slide 2: Problém -->
         <div class="slide" id="slide-2">
+            <div class="praut-logo"></div>
             <div class="slide-counter">2/11</div>
             <h2>🎯 Výzva pro ředitele škol v Karlovarském kraji</h2>
             
@@ -771,7 +785,7 @@
                 </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2-symmetric">
                 <div>
                     <h3>🔍 Co vidíme ve školách Karlovarského kraje:</h3>
                     <ul>
@@ -788,9 +802,9 @@
                         <h3>💡 Naše řešení pro ředitele:</h3>
                         <p>AI asistent, který pomůže vaší škole vyniknout v regionu a přitáhnout nejlepší studenty i učitele.</p>
                         
-                        <h4 style="margin-top: 1.5rem;">Výhody pro vaši školu:</h4>
+                        <h4 style="margin-top: 1.5rem;">Konkurenční výhoda:</h4>
                         <ul style="margin-top: 1rem;">
-                            <li><strong>Konkurenční výhoda:</strong> První škola s AI v regionu</li>
+                            <li><strong>První škola s komplexním AI řešením</strong> v regionu - nikdo jiný se nemůže pochlubit podobnou integrací</li>
                             <li><strong>Lepší reputace:</strong> "Moderní škola" přitáhne talenty</li>
                             <li><strong>Udržení studentů:</strong> Méně odchodů na jiné školy</li>
                         </ul>
@@ -801,12 +815,13 @@
 
         <!-- Slide 3: VARK Model -->
         <div class="slide" id="slide-3">
+            <div class="praut-logo"></div>
             <div class="slide-counter">3/11</div>
             <h2>🧠 Vědecký základ - Jak se lidé učí</h2>
             
-            <p style="font-size: 1.3rem; margin-bottom: 2rem; text-align: center; font-weight: 500;"><strong>VARK Model - 4 základní styly učení:</strong></p>
+            <p style="font-size: clamp(1rem, 1.5vw, 1.2rem); margin-bottom: 2rem; text-align: center; font-weight: 500;"><strong>VARK Model - 4 základní styly učení:</strong></p>
 
-            <div class="vark-grid">
+            <div class="vark-grid-symmetric">
                 <div class="vark-card">
                     <h3>👁️ Vizuální studenti</h3>
                     <p><span class="highlight-text">65% populace</span></p>
@@ -842,6 +857,7 @@
 
         <!-- Slide 4: Proč personalizace funguje -->
         <div class="slide" id="slide-4">
+            <div class="praut-logo"></div>
             <div class="slide-counter">4/11</div>
             <h2>📊 Proč personalizace funguje</h2>
             
@@ -860,7 +876,7 @@
                 </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2-symmetric">
                 <div>
                     <h3>🌍 Mezinárodní příklady úspěchu:</h3>
                     <ul>
@@ -889,6 +905,7 @@
 
         <!-- Slide 5: AI Řešení -->
         <div class="slide" id="slide-5">
+            <div class="praut-logo"></div>
             <div class="slide-counter">5/11</div>
             <h2>🤖 Naše AI řešení pro školy</h2>
             
@@ -935,6 +952,7 @@
 
         <!-- Slide 6: Konkrétní příklad -->
         <div class="slide" id="slide-6">
+            <div class="praut-logo"></div>
             <div class="slide-counter">6/11</div>
             <h2>📐 Konkrétní příklad - Hodina matematiky</h2>
             
@@ -950,7 +968,7 @@
                 
                 <h4 style="margin: 2rem 0 1.5rem 0; color: #22c55e;">✅ S naším AI:</h4>
                 
-                <div class="grid-2" style="gap: 1.5rem;">
+                <div class="slide-6-grid">
                     <div class="student-example">
                         <h4>👁️ Pro vizuálního studenta:</h4>
                         <ul>
@@ -989,6 +1007,7 @@
 
         <!-- Slide 7: Spolupráce -->
         <div class="slide" id="slide-7">
+            <div class="praut-logo"></div>
             <div class="slide-counter">7/11</div>
             <h2>🤝 Partnerství s Karlovarským krajem</h2>
             
@@ -996,7 +1015,7 @@
                 <h3 style="text-align: center;">Hledáme 3-5 škol z Karlovarského kraje pro pilotní program</h3>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2-symmetric">
                 <div>
                     <div class="glass-card problem-highlight">
                         <h3>🎯 Ideální partner pro pilotní program:</h3>
@@ -1041,6 +1060,7 @@
 
         <!-- Slide 8: Bezpečnost dat -->
         <div class="slide" id="slide-8">
+            <div class="praut-logo"></div>
             <div class="slide-counter">8/11</div>
             <h2>🔒 Ochrana dat a bezpečnost</h2>
             
@@ -1095,6 +1115,7 @@
 
         <!-- Slide 9: Implementace -->
         <div class="slide" id="slide-9">
+            <div class="praut-logo"></div>
             <div class="slide-counter">9/11</div>
             <h2>📅 Implementace krok za krokem</h2>
             
@@ -1151,6 +1172,7 @@
 
         <!-- Slide 10: Očekávané výsledky -->
         <div class="slide" id="slide-10">
+            <div class="praut-logo"></div>
             <div class="slide-counter">10/11</div>
             <h2>📈 Očekávané výsledky</h2>
             
@@ -1205,6 +1227,7 @@
 
         <!-- Slide 11: Call to Action -->
         <div class="slide" id="slide-11">
+            <div class="praut-logo"></div>
             <div class="slide-counter">11/11</div>
             <div class="cta-section">
                 <h1 style="margin-bottom: 2rem;">🚀 Výzva k partnerství pro Karlovarský kraj</h1>
@@ -1213,7 +1236,7 @@
                     <h3 style="margin-bottom: 2rem;">Dnes vám nabízím možnost stát se průkopníky</h3>
                 </div>
                 
-                <div class="grid-2" style="margin: 3rem 0; text-align: left;">
+                <div class="grid-2-symmetric" style="margin: 3rem 0; text-align: left;">
                     <div>
                         <h4>🎯 Proč právě vaše školy:</h4>
                         <ul>
@@ -1246,7 +1269,7 @@
                 </div>
                 
                 <div style="margin: 3rem 0;">
-                    <button class="cta-button" onclick="window.open('mailto:info@ai-vzdelavani.cz?subject=Zájem o AI vzdělávání - Karlovarský kraj')">📧 info@ai-vzdelavani.cz</button>
+                    <button class="cta-button" onclick="window.open('mailto:info@praut.cz?subject=Zájem o AI vzdělávání - Karlovarský kraj')">📧 info@praut.cz</button>
                     <button class="cta-button" onclick="window.open('tel:+420XXXXXXXXX')">📞 +420 XXX XXX XXX</button>
                     <button class="cta-button" onclick="alert('Kontaktujte nás pro individuální schůzku na vaší škole!')">🤝 Chci individuální schůzku</button>
                 </div>
@@ -1258,6 +1281,10 @@
                 <p style="font-size: 1.6rem; margin: 0; font-style: italic; opacity: 0.9;">
                     "Karlovarský kraj může být první region, kde každé dítě dostane vzdělávání šité na míru."
                 </p>
+            </div>
+            <div class="ceo-info">
+                <strong>Martin Švanda</strong><br>
+                CEO & Co-founder, Praut s.r.o.
             </div>
         </div>
     </div>
@@ -1418,10 +1445,8 @@
         // Enhanced scroll effects
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('body::before');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
+            // Note: body::before is a pseudo-element and cannot be selected directly in JS
+            // So this effect is not applicable as written; skipping or could be implemented differently
         });
 
         // Add loading animation

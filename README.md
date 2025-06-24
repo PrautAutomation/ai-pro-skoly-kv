@@ -1,7 +1,3 @@
-Tady je překlad do češtiny:
-
----
-
 # Vítejte ve svém projektu Lovable
 
 ## Informace o projektu

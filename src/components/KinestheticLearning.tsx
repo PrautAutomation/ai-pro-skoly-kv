@@ -164,14 +164,21 @@ export const KinestheticLearning: React.FC = () => {
                 />
               )}
               
-              {/* Projectile */}
+              {/* Shadow for better visibility */}
+              <circle
+                cx={projectile.x + 1}
+                cy={projectile.y + 1}
+                r="8"
+                fill="rgba(0,0,0,0.2)"
+              />
+              {/* Projectile - larger and more visible */}
               <circle
                 cx={projectile.x}
                 cy={projectile.y}
-                r="6"
+                r="8"
                 fill="#FF6B6B"
                 stroke="#fff"
-                strokeWidth="2"
+                strokeWidth="3"
               />
               
               {/* Cannon */}
@@ -237,6 +244,26 @@ export const KinestheticLearning: React.FC = () => {
             </Button>
           </div>
 
+          {/* Physics prediction */}
+          <div className="mt-4 p-3 bg-green-50 rounded-lg">
+            <h4 className="font-semibold mb-2">🎯 Teoretická predikce:</h4>
+            <div className="text-sm space-y-1">
+              {(() => {
+                const angleRad = (angle[0] * Math.PI) / 180;
+                const v0 = velocity[0];
+                const predictedRange = (v0 * v0 * Math.sin(2 * angleRad)) / 9.81;
+                const flightTime = (2 * v0 * Math.sin(angleRad)) / 9.81;
+                return (
+                  <>
+                    <div>Předpokládaný dosah: {predictedRange.toFixed(1)}m</div>
+                    <div>Doba letu: {flightTime.toFixed(1)}s</div>
+                    <div>Max. výška: {((v0 * Math.sin(angleRad))**2 / (2 * 9.81)).toFixed(1)}m</div>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+
           {/* Results */}
           {experimentResults.length > 0 && (
             <div className="mt-4 p-3 bg-blue-50 rounded-lg">
@@ -252,7 +279,28 @@ export const KinestheticLearning: React.FC = () => {
 
         {/* Calculator */}
         <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">🧮 Experimentální kalkulátor</h2>
+          <h2 className="text-xl font-semibold mb-4">🧮 Matematika trajektorie</h2>
+          
+          {/* Connection explanation */}
+          <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-3">🔗 Spojení s kvadratickou rovnicí:</h3>
+            <div className="text-sm text-blue-800 space-y-2">
+              <div><strong>Trajektorie míčku:</strong> y = -4.9x²/v₀²cos²θ + x·tanθ + h₀</div>
+              <div><strong>Kde:</strong></div>
+              <ul className="list-disc list-inside ml-4 space-y-1">
+                <li><strong>a = -4.9/v₀²cos²θ</strong> (gravitace ovlivňuje zakřivení)</li>
+                <li><strong>b = tanθ</strong> (úhel určuje sklon)</li>
+                <li><strong>c = h₀</strong> (výška výstřelu)</li>
+                <li><strong>v₀ = {velocity[0]} m/s</strong> (rychlost), <strong>θ = {angle[0]}°</strong> (úhel)</li>
+              </ul>
+              <div className="mt-2 p-2 bg-white rounded border">
+                <strong>Pro aktuální nastavení:</strong><br/>
+                a ≈ {(-4.9 / (velocity[0] * velocity[0] * Math.pow(Math.cos(angle[0] * Math.PI / 180), 2))).toFixed(4)}<br/>
+                b ≈ {Math.tan(angle[0] * Math.PI / 180).toFixed(4)}<br/>
+                c = 0 (výstřel ze země)
+              </div>
+            </div>
+          </div>
           
           <div className="space-y-4">
             <div>

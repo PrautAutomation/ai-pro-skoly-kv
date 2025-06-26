@@ -1,61 +1,136 @@
-# Vítejte ve svém projektu Lovable
+# AI Pro Školy - Karlovarský Kraj
 
-## Informace o projektu
+Kolekce moderních webových aplikací zaměřených na implementaci AI technologií ve vzdělávání v Karlovarském kraji.
 
-**URL**: [https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01)
+## 📋 Obsah repozitáře
 
-## Jak mohu tento kód upravit?
+### 🎯 Hlavní projekty
 
-Existuje několik způsobů, jak svou aplikaci upravovat.
+- **[AI pro školy v Karlovarský Kraj](https://prautautomation.github.io/ai-pro-skoly-kv/)** - Interaktivní prezentační aplikace showcasing AI řešení pro školy
 
-**Použijte Lovable**
+## 🚀 Hlavní aplikace: ai-pro-skoly-kv
 
-Stačí navštívit [Lovable Project](https://lovable.dev/projects/b912d493-d36c-42bf-aca6-07afe4ab2d01) a začít zadávat požadavky (promptovat).
+Moderní prezentační aplikace vytvořená s využitím nejnovějších webových technologií pro prezentaci AI řešení ve školství.
 
-Změny provedené přes Lovable budou automaticky commitnuty do tohoto repozitáře.
+### ✨ Klíčové funkce
 
-**Použijte svůj oblíbený IDE**
+- 📊 **Interaktivní prezentace** s 11 specializovanými slidy
+- 🎨 **Moderní UI/UX** využívající shadcn/ui komponenty
+- ⌨️ **Klávesové zkratky** pro rychlou navigaci
+- 📱 **Responzivní design** pro všechna zařízení
+- 🎯 **Zaměření na AI ve vzdělávání** - personalizace, VARK styly učení, bezpečnost
 
-Pokud chcete pracovat lokálně ve svém oblíbeném IDE, můžete si repozitář naklonovat a změny pushovat. Odeslané změny se také projeví v Lovable.
+### 🛠️ Technologický stack
 
-Jediným požadavkem je mít nainstalované Node.js & npm – [instalace pomocí nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Frontend**: React 18 + TypeScript
+- **Build nástroj**: Vite
+- **Styling**: Tailwind CSS
+- **UI komponenty**: shadcn/ui (Radix UI)
+- **Routing**: React Router
+- **State management**: React hooks + TanStack Query
+- **Linting**: ESLint + TypeScript ESLint
 
-Postupujte podle těchto kroků:
+## 🏃‍♂️ Rychlý start
 
-```sh
-# Krok 1: Naklonujte repozitář pomocí Git URL projektu.
+### Předpoklady
+
+- Node.js (doporučeno přes [nvm](https://github.com/nvm-sh/nvm))
+- npm nebo yarn
+
+### Instalace a spuštění
+
+```bash
+# 1. Klonování repozitáře
 git clone https://github.com/PrautAutomation/ai-pro-skoly-kv.git
-
-# Krok 2: Přejděte do složky s projektem.
 cd ai-pro-skoly-kv
 
-# Krok 3: Nainstalujte potřebné závislosti.
-npm i
+# 2. Přechod do hlavního projektu
+cd ai-pro-skoly-kv
 
-# Krok 4: Spusťte vývojový server s automatickým reloadem a okamžitým náhledem.
+# 3. Instalace závislostí
+npm install
+
+# 4. Spuštění vývojového serveru
 npm run dev
 ```
 
-**Úprava souboru přímo na GitHubu**
+Aplikace bude dostupná na `http://localhost:8080`
 
-* Přejděte na požadovaný soubor(y).
-* Klikněte na tlačítko „Edit“ (ikona tužky) vpravo nahoře v náhledu souboru.
-* Proveďte úpravy a commitněte změny.
+## 📜 Dostupné příkazy
 
-**Použití GitHub Codespaces**
+```bash
+# Vývoj
+npm run dev          # Spuštění vývojového serveru
+npm install          # Instalace závislostí
 
-* Přejděte na hlavní stránku vašeho repozitáře.
-* Klikněte na tlačítko „Code“ (zelené tlačítko) vpravo nahoře.
-* Vyberte záložku „Codespaces“.
-* Klikněte na „New codespace“ pro spuštění nového prostředí Codespace.
-* Upravujte soubory přímo v Codespace a po dokončení commitněte a pushněte změny.
+# Build
+npm run build        # Produkční build
+npm run build:dev    # Vývojový build
+npm run preview      # Náhled produkčního buildu
 
-## Jaké technologie jsou v projektu použity?
+# Kvalita kódu
+npm run lint         # Spuštění ESLint kontroly
+```
 
-Tento projekt je postaven na:
+## 🏗️ Architektura aplikace
 
-* Vite
-* TypeScript
-* React
-* shadcn-ui
-* Tailwind CSS
+```
+ai-pro-skoly-kv/
+├── src/
+│   ├── components/           # Komponenty aplikace
+│   │   ├── slides/          # Individuální slidy prezentace
+│   │   ├── ui/              # Reusable UI komponenty (shadcn/ui)
+│   │   ├── Presentation.tsx # Hlavní prezentační komponenta
+│   │   └── ...
+│   ├── pages/               # Stránky aplikace
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utility funkce
+│   ├── config/              # Konfigurační soubory
+│   └── utils/               # Helper funkce
+├── public/                  # Statické soubory
+└── ...
+```
+
+### 🎪 Prezentační slidy
+
+1. **Úvodní slide** - Představení projektu
+2. **Problematika** - Aktuální výzvy ve vzdělávání
+3. **VARK styly** - Různé styly učení studentů
+4. **Personalizace** - Přizpůsobení výuky
+5. **AI řešení** - Technologické možnosti
+6. **Praktický příklad** - Konkrétní implementace
+7. **Partnerství** - Spolupráce s institucemi
+8. **Bezpečnost** - Ochrana dat a soukromí
+9. **Implementace** - Postup zavedení
+10. **Výsledky** - Očekávané přínosy
+11. **Výzva k akci** - Další kroky
+
+## 🌐 Nasazení
+
+Aplikace je optimalizována pro nasazení na GitHub Pages:
+
+- Produkční build používá base path `/ai-pro-skoly-kv/`
+- Využívá HashRouter pro kompatibilitu s GitHub Pages
+- Automatické nasazení při push do main větve
+
+## 🤝 Přispívání
+
+1. Fork repozitáře
+2. Vytvoření feature větve (`git checkout -b feature/AmazingFeature`)
+3. Commit změn (`git commit -m 'Add some AmazingFeature'`)
+4. Push do větve (`git push origin feature/AmazingFeature`)
+5. Otevření Pull Request
+
+## 📝 Licence
+
+Tento projekt je licencován pod MIT licencí - viz [LICENSE](LICENSE) soubor pro detaily.
+
+## 👥 Autoři
+
+- **PrautAutomation** - *Iniciální práce* - [PrautAutomation](https://github.com/PrautAutomation)
+
+## 🙏 Poděkování
+
+- Karp za podporu projektu
+- Vzdělávací instituce za spolupráci
+- Open source komunitě za nástroje a knihovny
